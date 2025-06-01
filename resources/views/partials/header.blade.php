@@ -29,7 +29,7 @@
             <span>{{ Auth::user()->name }}</span>
 
             @if (Auth::user()->isAdmin())
-                <a href="#" class="header-nav__link">Панель управления</a>
+                <a href="/admin" class="header-nav__link">Панель управления</a>
             @endif
 
             <form method="POST" action="{{ route('logout') }}">
