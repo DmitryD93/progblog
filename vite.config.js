@@ -1,31 +1,16 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
-import tailwindcss from '@tailwindcss/vite';
-import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     plugins: [
         laravel({
-            input: {
-                'css/app': 'resources/css/app.css',
-                'css/fonts': 'resources/css/fonts.css',
-                'js/app': 'resources/js/app.js'
-            },
+            input: [
+                'resources/css/app.css',
+                'resources/css/fonts.css',
+                'resources/js/app.js'
+            ],
             refresh: true,
-        }),
-        viteStaticCopy({
-            targets: [
-                {
-                    src: 'resources/images/icons/*.svg',
-                    dest: 'assets/images/icons'
-                },
-                {
-                    src: 'resources/fonts/*',
-                    dest: 'assets/fonts'
-                }
-            ]
-        }),
-        // tailwindcss(),
+        })
     ],
     build: {
         outDir: 'public/build',
@@ -33,26 +18,28 @@ export default defineConfig({
         rollupOptions: {
             output: {
                 assetFileNames: (assetInfo) => {
-                    if (assetInfo.name?.endsWith('.svg')) {
-                        return 'assets/images/icons/[name][extname]';
-                    }
-                    if (assetInfo.name?.match(/\.(png|jpg|jpeg|gif|webp)$/)) {
-                        return 'assets/images/[name][extname]';
-                    }
                     if (assetInfo.name?.endsWith('.css')) {
-                        return 'assets/css/[name][extname]';
+                        return 'css/[name].[hash][extname]';
                     }
+                    // Шрифты → /public/build/fonts/[name].[hash][extname]
                     if (assetInfo.name?.match(/\.(woff2|ttf|woff|eot)$/)) {
-                        return 'assets/fonts/[name][extname]';
+                        return 'fonts/[name].[hash][extname]';
                     }
-                    return 'assets/[name][extname]';
+                    // SVG → /public/build/images/icons/[name].[hash][extname]
+                    if (assetInfo.name?.endsWith('.svg')) {
+                        return 'images/icons/[name].[hash][extname]';
+                    }
+                    // Изображения → /public/build/images/[name].[hash][extname]
+                    if (assetInfo.name?.match(/\.(png|jpg|jpeg|gif|webp)$/)) {
+                        return 'images/[name].[hash][extname]';
+                    }
+                    // Остальное → /public/build/assets/[name].[hash][extname]
+                    return 'assets/[name].[hash][extname]';
                 },
-                chunkFileNames: 'assets/js/[name].js',
-                entryFileNames: 'assets/js/[name].js',
+                // JS файлы → /public/build/js/[name].[hash].js
+                entryFileNames: 'js/[name].[hash].js',
+                chunkFileNames: 'js/[name].[hash].js'
             }
-        },
-        assetsInlineLimit: (filePath) => {
-            return filePath.match(/\.(svg|woff2|ttf|woff|eot|png|jpg|jpeg|gif|webp)$/) ? 0 : undefined;
         }
     }
 });

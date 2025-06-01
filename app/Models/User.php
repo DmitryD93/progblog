@@ -21,7 +21,18 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
+
+    protected $attributes = [
+        'role' => 'regular',
+    ];
+
+    protected $casts = [
+        'role' => 'string',
+    ];
+
+    public static $roles = ['regular', 'admin'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -31,7 +42,15 @@ class User extends Authenticatable
     protected $hidden = [
         'password',
         'remember_token',
+        'role',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+
 
     /**
      * Get the attributes that should be cast.

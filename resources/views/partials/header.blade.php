@@ -23,11 +23,46 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
     <nav class="header-nav">
-        <a class="header-nav__link btn hover:underline" href="">Login</a>
+        @auth()
+            <span>{{ Auth::user()->name }}</span>
+
+            @if (Auth::user()->isAdmin())
+                <a href="#" class="header-nav__link">Панель управления</a>
+            @endif
+
+            <form method="POST" action="{{ route('logout') }}">
+                @csrf
+                <button
+                    type="submit"
+                    class=""
+                >
+                    Выйти
+                </button>
+            </form>
+        @else
+            <button type="button" data-fancybox data-src="#dialog-register" class="header-nav__link btn">
+                Register
+            </button>
+            <button type="button" data-fancybox data-src="#dialog-login" class="header-nav__link btn">
+                Login
+            </button>
+        @endauth
     </nav>
 </header>
+
+
+<div id="dialog-register" style="display:none;max-width:100%;">
+    <livewire:auth.register/>
+</div>
+<div id="dialog-login" style="display:none;max-width:100%;">
+    <livewire:auth.user-login/>
+</div>
+
+
+
+
+
+
+

@@ -3,6 +3,7 @@
     display: flex;
     gap: 20px;
     align-items: center;
+    justify-content: space-between;
     top: 0;
     left: 0;
     width: 100%;
@@ -61,3 +62,9 @@
 .mini-cube-face--left   { transform: rotateY(-90deg) translateZ(30px); }
 .mini-cube-face--top    { transform: rotateX(90deg) translateZ(30px); }
 .mini-cube-face--bottom { transform: rotateX(-90deg) translateZ(30px); }
+
+
+.header-nav {
+    display: flex;
+    gap: 20px;
+}
