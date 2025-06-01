@@ -1,0 +1,71 @@
+body {
+    font-family: 'Hauora', sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 24px;
+}
+
+@font-face {
+    font-family: "Hauora";
+    src: url("../fonts/Hauora-Regular.woff2") format("woff2"), url("../fonts/Hauora-Regular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Hauora";
+    src: url("../fonts/Hauora-ExtraBold.woff2") format("woff2"), url("../fonts/Hauora-ExtraBold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Hauora";
+    src: url("../fonts/Hauora-Bold.woff2") format("woff2"), url("../fonts/Hauora-Bold.woff") format("woff");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Hauora";
+    src: url("../fonts/Hauora-ExtraLight.woff2") format("woff2"), url("../fonts/Hauora-ExtraLight.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Sverdlovsk";
+    src: url("../fonts/SverdlovskRegular.woff2") format("woff2"), url("../fonts/SverdlovskRegular.woff") format("woff");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Hauora";
+    src: url("../fonts/Hauora-SemiBold.woff2") format("woff2"), url("../fonts/Hauora-SemiBold.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Hauora";
+    src: url("../fonts/Hauora-Medium.woff2") format("woff2"), url("../fonts/Hauora-Medium.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Hauora";
+    src: url("../fonts/Hauora-Light.woff2") format("woff2"), url("../fonts/Hauora-Light.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
